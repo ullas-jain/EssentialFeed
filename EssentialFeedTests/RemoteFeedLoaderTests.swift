@@ -66,6 +66,15 @@ class RemoteFeedLoaderTests: XCTestCase {
         })
     }
     
+    func test_load_deliversNoItemsOn200HTTPResponseWithEmtpyJSONList() {
+        let (sut, client) = makeSUT()
+        
+        expect(sut, toCompleteWithError: .invalidData, when: {
+            let invalidJSON = Data.init("1".utf8)
+            client.complete(withStatusCode: 200, data: invalidJSON)
+        })
+    }
+    
     // MARK: - Helpers
     
     private func makeSUT(url: URL = URL(string: "https://a-url.com")!) -> (sut: RemoteFeedLoader, client: HTTPClientSpy) {
