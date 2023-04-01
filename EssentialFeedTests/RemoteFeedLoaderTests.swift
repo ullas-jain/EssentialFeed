@@ -51,7 +51,7 @@ class RemoteFeedLoaderTests: XCTestCase {
         
         samples.enumerated().forEach{ index, code in
             expect(sut, toCompleteWithError: .invalidData, when: {
-                let clientError = NSError(domain: "Test", code: 0)
+                _ = NSError(domain: "Test", code: 0)
                 client.complete(withStatusCode: code, at: index)
             })
         }
@@ -69,10 +69,13 @@ class RemoteFeedLoaderTests: XCTestCase {
     func test_load_deliversNoItemsOn200HTTPResponseWithEmtpyJSONList() {
         let (sut, client) = makeSUT()
         
-        expect(sut, toCompleteWithError: .invalidData, when: {
-            let invalidJSON = Data.init("1".utf8)
-            client.complete(withStatusCode: 200, data: invalidJSON)
-        })
+        var capturedResults = [RemoteFeedLoader.Result]()
+        sut.load { capturedResults.append($0) }
+        
+        let emptyListJSON = Data.init("{\"items\":[]}".utf8)
+        client.complete(withStatusCode: 200, data: emptyListJSON)
+        
+        XCTAssertEqual(capturedResults, [.success([])])
     }
     
     // MARK: - Helpers
