@@ -1,18 +1,4 @@
-//
-//  FeedItemsMapper.swift
-//  EssentialFeed
-//
-//  Created by Jain Ullas on 4/2/23.
-//
-
 import Foundation
-
-internal struct RemoteFeedItem: Decodable {
-    internal let id: UUID
-    internal let description: String?
-    internal let location: String?
-    internal let image: URL
-}
 
 internal class FeedItemsMapper {
     
