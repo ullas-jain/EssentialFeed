@@ -12,7 +12,7 @@ class CacheFeedUseCaseTests: XCTestCase {
     func test_save_requestsCacheDeletion() {
         let (sut, store) = makeSUT()
         
-        sut.save(uniqueItems().models) { _ in }
+        sut.save(uniqueImageFeed().models) { _ in }
         
         XCTAssertEqual(store.receivedMessages, [.deleteCachedFeed])
     }
@@ -21,7 +21,7 @@ class CacheFeedUseCaseTests: XCTestCase {
         let (sut, store) = makeSUT()
         let deletionError = anyNSError()
         
-        sut.save(uniqueItems().models) { _ in }
+        sut.save(uniqueImageFeed().models) { _ in }
         store.completeDeletion(with: deletionError)
         
         XCTAssertEqual(store.receivedMessages, [.deleteCachedFeed])
@@ -30,7 +30,7 @@ class CacheFeedUseCaseTests: XCTestCase {
     func test_save_requestNewCacheWithTimestampOnSuccessfulDeletion() {
         let timestamp = Date()
         let (sut, store) = makeSUT(currentDate: { timestamp })
-        let (items, localItems) = uniqueItems()
+        let (items, localItems) = uniqueImageFeed()
         
         sut.save(items) { _ in }
         store.completeDeletionSuccessfully()
@@ -71,7 +71,7 @@ class CacheFeedUseCaseTests: XCTestCase {
         var sut: LocalFeedLoader? = LocalFeedLoader(store: store, currentDate: Date.init)
         
         var receivedResults = [LocalFeedLoader.SaveResult]()
-        sut?.save([uniqueItem()]) { receivedResults.append($0) }
+        sut?.save([uniqueImage()]) { receivedResults.append($0) }
         
         sut = nil
         store.completeDeletion(with: anyNSError())
@@ -84,7 +84,7 @@ class CacheFeedUseCaseTests: XCTestCase {
         var sut: LocalFeedLoader? = LocalFeedLoader(store: store, currentDate: Date.init)
         
         var receivedResults = [LocalFeedLoader.SaveResult]()
-        sut?.save([uniqueItem()]) { receivedResults.append($0) }
+        sut?.save([uniqueImage()]) { receivedResults.append($0) }
         
         store.completeDeletionSuccessfully()
         sut = nil
@@ -99,7 +99,7 @@ class CacheFeedUseCaseTests: XCTestCase {
 
         enum ReceivedMessages: Equatable {
             case deleteCachedFeed
-            case insert([LocalFeedItem], Date)
+            case insert([LocalFeedImage], Date)
         }
         
         private(set) var receivedMessages = [ReceivedMessages]()
@@ -111,7 +111,7 @@ class CacheFeedUseCaseTests: XCTestCase {
             receivedMessages.append(.deleteCachedFeed)
         }
         
-        func insert(_ items: [LocalFeedItem], timestamp: Date, completion: @escaping InsertionCompletion) {
+        func insert(_ items: [LocalFeedImage], timestamp: Date, completion: @escaping InsertionCompletion) {
             insertionCompletions.append(completion)
             receivedMessages.append(.insert(items, timestamp))
         }
@@ -138,7 +138,7 @@ class CacheFeedUseCaseTests: XCTestCase {
         let exp = expectation(description: "Wait for save completion")
         
         var receivedError: Error?
-        sut.save([uniqueItem(), uniqueItem(), uniqueItem()]) { error in
+        sut.save([uniqueImage(), uniqueImage(), uniqueImage()]) { error in
             receivedError = error
             exp.fulfill()
         }
@@ -159,13 +159,13 @@ class CacheFeedUseCaseTests: XCTestCase {
         return (sut, store)
     }
     
-    private func uniqueItem() -> FeedItem {
-        return FeedItem(id: UUID(), imageURL: anyURL(), description: "any", location: "any")
+    private func uniqueImage() -> FeedImage {
+        return FeedImage(id: UUID(), url: anyURL(), description: "any", location: "any")
     }
     
-    private func uniqueItems() -> (models: [FeedItem], local: [LocalFeedItem]) {
-        let items = [uniqueItem(), uniqueItem()]
-        let localItems = items.map { LocalFeedItem(id: $0.id, imageURL: $0.imageURL, description: $0.description, location: $0.location) }
+    private func uniqueImageFeed() -> (models: [FeedImage], local: [LocalFeedImage]) {
+        let items = [uniqueImage(), uniqueImage()]
+        let localItems = items.map { LocalFeedImage(id: $0.id, url: $0.url, description: $0.description, location: $0.location) }
         return (items, localItems)
     }
     
