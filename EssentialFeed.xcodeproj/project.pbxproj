@@ -28,6 +28,7 @@
 		28F1EC5229DBE0080008D409 /* TrackMemoryLeakHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F1EC5129DBE0080008D409 /* TrackMemoryLeakHelper.swift */; };
 		28F2DBC729E3D1CD00A0F85A /* FeedStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F2DBC629E3D1CD00A0F85A /* FeedStore.swift */; };
 		28F2DBC929E3D1E500A0F85A /* LocalFeedLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F2DBC829E3D1E500A0F85A /* LocalFeedLoader.swift */; };
+		28FDEEE029E59DE6003C7852 /* ValidateFeedCacheUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FDEEDF29E59DE6003C7852 /* ValidateFeedCacheUseCaseTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +71,7 @@
 		28F1EC5129DBE0080008D409 /* TrackMemoryLeakHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackMemoryLeakHelper.swift; sourceTree = "<group>"; };
 		28F2DBC629E3D1CD00A0F85A /* FeedStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedStore.swift; sourceTree = "<group>"; };
 		28F2DBC829E3D1E500A0F85A /* LocalFeedLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalFeedLoader.swift; sourceTree = "<group>"; };
+		28FDEEDF29E59DE6003C7852 /* ValidateFeedCacheUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidateFeedCacheUseCaseTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -177,6 +179,7 @@
 				286BC4FD29E50FFE00261732 /* Helpers */,
 				28810A0429E167F600FFC194 /* CacheFeedUseCaseTests.swift */,
 				286BC4FB29E50F9300261732 /* LoadFeedFromCacheUseCaseTests.swift */,
+				28FDEEDF29E59DE6003C7852 /* ValidateFeedCacheUseCaseTests.swift */,
 			);
 			path = "Feed Cache";
 			sourceTree = "<group>";
@@ -363,6 +366,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				28FDEEE029E59DE6003C7852 /* ValidateFeedCacheUseCaseTests.swift in Sources */,
 				2817408329D8138200D1B0F0 /* LoadFeedFromRemoteUseCaseTests.swift in Sources */,
 				2817407329D8117500D1B0F0 /* URLSessionHTTPClientTests.swift in Sources */,
 				286BC4FF29E5100700261732 /* FeedStoreSpy.swift in Sources */,
