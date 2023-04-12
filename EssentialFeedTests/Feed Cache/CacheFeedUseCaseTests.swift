@@ -130,12 +130,4 @@ class CacheFeedUseCaseTests: XCTestCase {
         let localItems = items.map { LocalFeedImage(id: $0.id, url: $0.url, description: $0.description, location: $0.location) }
         return (items, localItems)
     }
-    
-    private func anyURL() -> URL {
-        return URL(string: "http://any-url.com")!
-    }
-    
-    private func anyNSError() -> NSError {
-        return NSError(domain: "any error", code: 0)
-    }
 }
