@@ -2,8 +2,7 @@ import CoreData
 
 public final class CoreDataFeedStore: FeedStore {
     public static let modelName = "FeedStore"
-    public static let model = NSManagedObjectModel(name: modelName, in: Bundle(for: CoreDataFeedStore.self))
-
+    
     private let container: NSPersistentContainer
     private let context: NSManagedObjectContext
 
@@ -11,17 +10,17 @@ public final class CoreDataFeedStore: FeedStore {
         public let modelName: String
     }
 
-    public init(storeURL: URL) throws {
-        guard let model = CoreDataFeedStore.model else {
-            throw ModelNotFound(modelName: CoreDataFeedStore.modelName)
+    public init(storeURL: URL, bundle: Bundle = .main) throws {
+        if let model = try? NSManagedObjectModel(name: "FeedStore", in: bundle) {
+            container = try NSPersistentContainer.load(
+                name: CoreDataFeedStore.modelName,
+                model: model,
+                url: storeURL
+            )
+            context = container.newBackgroundContext()
+        } else {
+            throw ModelNotFound(modelName: "FeedStore")
         }
-
-        container = try NSPersistentContainer.load(
-            name: CoreDataFeedStore.modelName,
-            model: model,
-            url: storeURL
-        )
-        context = container.newBackgroundContext()
     }
 
     deinit {
@@ -59,10 +58,10 @@ public final class CoreDataFeedStore: FeedStore {
                 managedCache.timestamp = timestamp
                 managedCache.feed = try feed.toBeStored(in: context)
                 try context.save()
-                completion(nil)
+                completion(.success(()))
             } catch {
                 context.rollback()
-                completion(error)
+                completion(.failure(error))
             }
         }
     }
@@ -73,10 +72,10 @@ public final class CoreDataFeedStore: FeedStore {
                 try ManagedCache.find(in: context)
                     .map(context.delete)
                     .map(context.save)
-                completion(nil)
+                completion(.success(()))
             } catch {
                 context.rollback()
-                completion(error)
+                completion(.failure(error))
             }
         }
     }
