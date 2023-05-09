@@ -65,6 +65,9 @@ Location</string>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ffh-DD-UM3">
                                                             <rect key="frame" x="0.0" y="0.0" width="353" height="220"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" secondItem="ffh-DD-UM3" secondAttribute="height" multiplier="1:1" id="wW2-3F-h94"/>
+                                                            </constraints>
                                                         </imageView>
                                                     </subviews>
                                                     <color key="backgroundColor" red="0.8901960784313725" green="0.8901960784313725" blue="0.8901960784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
