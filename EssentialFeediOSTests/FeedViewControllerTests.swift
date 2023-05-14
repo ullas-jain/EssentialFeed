@@ -34,7 +34,7 @@ final class FeedViewControllerTests: XCTestCase {
         loader.completeFeedLoadingWithError(at: 1)
         XCTAssertFalse(sut.isShowingLoadingIndicator, "Expected no loading indicator once user initiated loading completes with error")
     }
-
+    
     func test_loadFeedCompletion_rendersSuccessfullyLoadedFeed() {
         let image0 = makeImage(description: "a description", location: "a location")
         let image1 = makeImage(description: nil, location: "another location")
@@ -44,10 +44,10 @@ final class FeedViewControllerTests: XCTestCase {
         
         sut.loadViewIfNeeded()
         assertThat(sut, isRendering: [])
-
+        
         loader.completeFeedLoading(with: [image0], at: 0)
         assertThat(sut, isRendering: [image0])
-
+        
         sut.simulateUserInitiatedFeedReload()
         loader.completeFeedLoading(with: [image0, image1, image2, image3], at: 1)
         assertThat(sut, isRendering: [image0, image1, image2, image3])
@@ -65,7 +65,7 @@ final class FeedViewControllerTests: XCTestCase {
         loader.completeFeedLoadingWithError(at: 1)
         assertThat(sut, isRendering: [image0])
     }
-
+    
     func test_feedImageView_loadsImageURLWhenVisible() {
         let image0 = makeImage(url: URL(string: "http://url-0.com")!)
         let image1 = makeImage(url: URL(string: "http://url-1.com")!)
@@ -75,7 +75,7 @@ final class FeedViewControllerTests: XCTestCase {
         loader.completeFeedLoading(with: [image0, image1])
         
         XCTAssertEqual(loader.loadedImageURLs, [], "Expected no image URL requests until views become visible")
-
+        
         sut.simulateFeedImageViewVisible(at: 0)
         XCTAssertEqual(loader.loadedImageURLs, [image0.url], "Expected first image URL request once first view becomes visible")
         
@@ -98,7 +98,7 @@ final class FeedViewControllerTests: XCTestCase {
         sut.simulateFeedImageViewNotVisible(at: 1)
         XCTAssertEqual(loader.cancelledImageURLs, [image0.url, image1.url], "Expected two cancelled image URL requests once second image is also not visible anymore")
     }
-
+    
     // MARK: - Helpers
     
     private func makeSUT(file: StaticString = #file, line: UInt = #line) -> (sut: FeedViewController, loader: LoaderSpy) {
@@ -137,11 +137,11 @@ final class FeedViewControllerTests: XCTestCase {
     private func makeImage(description: String? = nil, location: String? = nil, url: URL = URL(string: "http://any-url.com")!) -> FeedImage {
         return FeedImage(id: UUID(), url: url, description: description, location: location)
     }
-
+    
     class LoaderSpy: FeedLoader, FeedImageDataLoader {
         
         // MARK: - FeedLoader
-
+        
         private var feedRequests = [(FeedLoader.Result) -> Void]()
         
         var loadFeedCallCount: Int {
@@ -162,19 +162,23 @@ final class FeedViewControllerTests: XCTestCase {
         }
         
         // MARK: - FeedImageDataLoader
-
-        private(set) var loadedImageURLs = [URL]()
-        private(set) var cancelledImageURLs = [URL]()
-
-        func loadImageData(from url: URL) {
-            loadedImageURLs.append(url)
+        
+        private struct TaskSpy: FeedImageDataLoaderTask {
+            let cancelCallback: () -> Void
+            func cancel() {
+                cancelCallback()
+            }
         }
         
-        func cancelImageDataLoad(from url: URL) {
-            cancelledImageURLs.append(url)
+        private(set) var loadedImageURLs = [URL]()
+        private(set) var cancelledImageURLs = [URL]()
+        
+        func loadImageData(from url: URL) -> FeedImageDataLoaderTask {
+            loadedImageURLs.append(url)
+            return TaskSpy { [weak self] in self?.cancelledImageURLs.append(url) }
         }
     }
-
+    
 }
 
 private extension FeedViewController {
@@ -208,7 +212,7 @@ private extension FeedViewController {
         let index = IndexPath(row: row, section: feedImagesSection)
         return ds?.tableView(tableView, cellForRowAt: index)
     }
-
+    
     private var feedImagesSection: Int {
         return 0
     }
