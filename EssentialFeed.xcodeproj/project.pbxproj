@@ -315,9 +315,9 @@
 		28850E3F2A11F85400145FE1 /* Feed UI */ = {
 			isa = PBXGroup;
 			children = (
+				284B4DEA2A12823200EB4246 /* Composers */,
 				28850E402A11F85F00145FE1 /* Controllers */,
 				28850E412A11F86800145FE1 /* Views */,
-				284B4DEA2A12823200EB4246 /* Composers */,
 			);
 			path = "Feed UI";
 			sourceTree = "<group>";
