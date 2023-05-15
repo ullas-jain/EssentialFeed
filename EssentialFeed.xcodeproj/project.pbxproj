@@ -344,6 +344,14 @@
 			isa = PBXGroup;
 			children = (
 				28850E352A11037300145FE1 /* FeedViewControllerTests.swift */,
+				28850E572A11FB0D00145FE1 /* Helpers */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		28850E572A11FB0D00145FE1 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
 				28850E472A11F8F900145FE1 /* UIImage+TestHelpers.swift .swift */,
 				28850E492A11F94A00145FE1 /* UIRefreshControl+TestHelpers.swift .swift */,
 				28850E4B2A11F97600145FE1 /* UIButton+TestHelpers.swift .swift */,
@@ -353,7 +361,7 @@
 				28850E532A11FA7000145FE1 /* FeedViewControllerTests+LoaderSpy.swift .swift */,
 				28850E552A11FAA600145FE1 /* FeedViewControllerTests+Assertions.swift .swift */,
 			);
-			path = Controllers;
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		28BF5DF229DE991F00FD870A /* EssentialFeedApiEndToEndTests */ = {
