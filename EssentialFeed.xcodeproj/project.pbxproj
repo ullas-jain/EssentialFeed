@@ -25,6 +25,7 @@
 		284B4DEF2A13379500EB4246 /* FeedImageViewModel.swift .swift in Sources */ = {isa = PBXBuildFile; fileRef = 284B4DEE2A13379500EB4246 /* FeedImageViewModel.swift .swift */; };
 		284C0E7329E66DF0001F7D7E /* FeedCacheTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284C0E7229E66DF0001F7D7E /* FeedCacheTestHelpers.swift */; };
 		284C0E7529E66E91001F7D7E /* SharedTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284C0E7429E66E91001F7D7E /* SharedTestHelpers.swift */; };
+		28573B3F2A1C78BB00A0BD2D /* FeedLocalizationTests.swift .swift in Sources */ = {isa = PBXBuildFile; fileRef = 28573B3E2A1C78BB00A0BD2D /* FeedLocalizationTests.swift .swift */; };
 		286335A62A1BBDEB00F1E0EB /* FeedViewControllerTests+Localization.swift .swift in Sources */ = {isa = PBXBuildFile; fileRef = 286335A52A1BBDEB00F1E0EB /* FeedViewControllerTests+Localization.swift .swift */; };
 		286335A72A1BBEB100F1E0EB /* Feed.strings in Resources */ = {isa = PBXBuildFile; fileRef = 286335A92A1BBEB100F1E0EB /* Feed.strings */; };
 		28639FB52A077E8A00CF2742 /* CoreDataHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28639FB42A077E8A00CF2742 /* CoreDataHelpers.swift */; };
@@ -133,6 +134,7 @@
 		284C0E7429E66E91001F7D7E /* SharedTestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedTestHelpers.swift; sourceTree = "<group>"; };
 		28573B3C2A1C77DD00A0BD2D /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Feed.strings"; sourceTree = "<group>"; };
 		28573B3D2A1C781A00A0BD2D /* el */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = el; path = el.lproj/Feed.strings; sourceTree = "<group>"; };
+		28573B3E2A1C78BB00A0BD2D /* FeedLocalizationTests.swift .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FeedLocalizationTests.swift .swift"; sourceTree = "<group>"; };
 		286335A52A1BBDEB00F1E0EB /* FeedViewControllerTests+Localization.swift .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FeedViewControllerTests+Localization.swift .swift"; sourceTree = "<group>"; };
 		286335A82A1BBEB100F1E0EB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Feed.strings; sourceTree = "<group>"; };
 		28639FB42A077E8A00CF2742 /* CoreDataHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataHelpers.swift; sourceTree = "<group>"; };
@@ -317,6 +319,14 @@
 			path = Presentation;
 			sourceTree = "<group>";
 		};
+		28573B402A1C78C100A0BD2D /* Feed Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				28573B3E2A1C78BB00A0BD2D /* FeedLocalizationTests.swift .swift */,
+			);
+			path = "Feed Presentation";
+			sourceTree = "<group>";
+		};
 		28639FB62A077EA200CF2742 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -454,6 +464,7 @@
 			isa = PBXGroup;
 			children = (
 				28850E452A11F8B800145FE1 /* Feed UI */,
+				28573B402A1C78C100A0BD2D /* Feed Presentation */,
 			);
 			path = EssentialFeediOSTests;
 			sourceTree = "<group>";
@@ -789,6 +800,7 @@
 				28850E382A11064800145FE1 /* TrackMemoryLeakHelper.swift in Sources */,
 				286335A62A1BBDEB00F1E0EB /* FeedViewControllerTests+Localization.swift .swift in Sources */,
 				28850E482A11F8F900145FE1 /* UIImage+TestHelpers.swift .swift in Sources */,
+				28573B3F2A1C78BB00A0BD2D /* FeedLocalizationTests.swift .swift in Sources */,
 				28850E4E2A11F9A100145FE1 /* UIControl+TestHelpers.swift .swift in Sources */,
 				28850E4C2A11F97600145FE1 /* UIButton+TestHelpers.swift .swift in Sources */,
 				28850E4A2A11F94A00145FE1 /* UIRefreshControl+TestHelpers.swift .swift in Sources */,
