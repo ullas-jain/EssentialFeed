@@ -17,6 +17,7 @@
 		2817408529D9627500D1B0F0 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2817408429D9627500D1B0F0 /* HTTPClient.swift */; };
 		2817408729D962D600D1B0F0 /* FeedItemsMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2817408629D962D600D1B0F0 /* FeedItemsMapper.swift */; };
 		2836D2732A1DCD1D00D391EE /* FeedPresenterTests.swift .swift in Sources */ = {isa = PBXBuildFile; fileRef = 2836D2722A1DCD1D00D391EE /* FeedPresenterTests.swift .swift */; };
+		2836D2762A1DD0E200D391EE /* Feed.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2836D2782A1DD0E200D391EE /* Feed.strings */; };
 		28431AA02A1488CC000DC20E /* FeedPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28431A9F2A1488CC000DC20E /* FeedPresenter.swift */; };
 		28431AA22A14A530000DC20E /* FeedImagePresenter.swift .swift in Sources */ = {isa = PBXBuildFile; fileRef = 28431AA12A14A530000DC20E /* FeedImagePresenter.swift .swift */; };
 		28431AA42A14A5B7000DC20E /* FeedLoadingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28431AA32A14A5B7000DC20E /* FeedLoadingViewModel.swift */; };
@@ -130,6 +131,9 @@
 		2817408429D9627500D1B0F0 /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
 		2817408629D962D600D1B0F0 /* FeedItemsMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedItemsMapper.swift; sourceTree = "<group>"; };
 		2836D2722A1DCD1D00D391EE /* FeedPresenterTests.swift .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FeedPresenterTests.swift .swift"; sourceTree = "<group>"; };
+		2836D2772A1DD0E200D391EE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Feed.strings; sourceTree = "<group>"; };
+		2836D2792A1DD0E700D391EE /* el */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = el; path = el.lproj/Feed.strings; sourceTree = "<group>"; };
+		2836D27A2A1DD0E800D391EE /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Feed.strings"; sourceTree = "<group>"; };
 		28431A9F2A1488CC000DC20E /* FeedPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedPresenter.swift; sourceTree = "<group>"; };
 		28431AA12A14A530000DC20E /* FeedImagePresenter.swift .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FeedImagePresenter.swift .swift"; sourceTree = "<group>"; };
 		28431AA32A14A5B7000DC20E /* FeedLoadingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedLoadingViewModel.swift; sourceTree = "<group>"; };
@@ -315,6 +319,7 @@
 			isa = PBXGroup;
 			children = (
 				2836D2722A1DCD1D00D391EE /* FeedPresenterTests.swift .swift */,
+				2836D2782A1DD0E200D391EE /* Feed.strings */,
 			);
 			path = "Feed Presentation";
 			sourceTree = "<group>";
@@ -700,6 +705,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2836D2762A1DD0E200D391EE /* Feed.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -864,6 +870,16 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		2836D2782A1DD0E200D391EE /* Feed.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2836D2772A1DD0E200D391EE /* en */,
+				2836D2792A1DD0E700D391EE /* el */,
+				2836D27A2A1DD0E800D391EE /* pt-BR */,
+			);
+			name = Feed.strings;
+			sourceTree = "<group>";
+		};
 		286335A92A1BBEB100F1E0EB /* Feed.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
