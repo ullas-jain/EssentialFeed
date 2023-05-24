@@ -281,9 +281,9 @@
 		2817407129D8117500D1B0F0 /* EssentialFeedTests */ = {
 			isa = PBXGroup;
 			children = (
-				2836D2712A1DCD0F00D391EE /* Feed Presentation */,
 				28F1EC5029DBDFF30008D409 /* Helpers */,
 				28810A0329E167E800FFC194 /* Feed Cache */,
+				2836D2712A1DCD0F00D391EE /* Feed Presentation */,
 				2817407229D8117500D1B0F0 /* URLSessionHTTPClientTests.swift */,
 				2817408229D8138100D1B0F0 /* LoadFeedFromRemoteUseCaseTests.swift */,
 			);
