@@ -12,29 +12,46 @@ class RemoteFeedImageDataLoader {
         case invalidData
     }
     
-    private struct HTTPTaskWrapper: FeedImageDataLoaderTask {
-        let wrapped: HTTPClientTask
+    private final class HTTPClientTaskWrapper: FeedImageDataLoaderTask {
+        private var completion: ((FeedImageDataLoader.Result) -> Void)?
+
+        var wrapped: HTTPClientTask?
+
+        init(_ completion: @escaping (FeedImageDataLoader.Result) -> Void) {
+            self.completion = completion
+        }
+        
+        func complete(with result: FeedImageDataLoader.Result) {
+            completion?(result)
+        }
         
         func cancel() {
-            wrapped.cancel()
+            preventFurtherCompletions()
+            wrapped?.cancel()
+        }
+        
+        private func preventFurtherCompletions() {
+            completion = nil
         }
     }
     
     @discardableResult
     func loadImageData(from url: URL, completion: @escaping (FeedImageDataLoader.Result) -> Void) -> FeedImageDataLoaderTask {
-        return HTTPTaskWrapper(wrapped: client.get(from: url) { [weak self] result in
+        let task = HTTPClientTaskWrapper(completion)
+        task.wrapped = client.get(from: url) { [weak self] result in
             guard self != nil else { return }
 
             switch result {
             case let .success(data, response):
                 if response.statusCode == 200, !data.isEmpty {
-                    completion(.success(data))
+                    task.complete(with: .success(data))
                 } else {
-                    completion(.failure(Error.invalidData))
+                    task.complete(with: .failure(Error.invalidData))
                 }
-            case let .failure(error): completion(.failure(error))
+            case let .failure(error): task.complete(with: .failure(error))
             }
-        })
+        }
+        return task
     }
 }
 
@@ -104,6 +121,32 @@ class RemoteFeedImageDataLoaderTests: XCTestCase {
         })
     }
     
+    func test_cancelLoadImageDataURLTask_cancelsClientURLRequest() {
+        let (sut, client) = makeSUT()
+        let url = URL(string: "https://a-given-url.com")!
+
+        let task = sut.loadImageData(from: url) { _ in }
+        XCTAssertTrue(client.cancelledURLs.isEmpty, "Expected no cancelled URL request until task is cancelled")
+        
+        task.cancel()
+        XCTAssertEqual(client.cancelledURLs, [url], "Expected cancelled URL request after task is cancelled")
+    }
+    
+    func test_loadImageDataFromURL_doesNotDeliverResultAfterCancellingTask() {
+        let (sut, client) = makeSUT()
+        let nonEmptyData = Data("non-empty data".utf8)
+
+        var received = [FeedImageDataLoader.Result]()
+        let task = sut.loadImageData(from: anyURL()) { received.append($0) }
+        task.cancel()
+        
+        client.complete(withStatusCode: 404, data: anyData())
+        client.complete(withStatusCode: 200, data: nonEmptyData)
+        client.complete(with: anyNSError())
+        
+        XCTAssertTrue(received.isEmpty, "Expected no received results after cancelling task")
+    }
+    
     func test_loadImageDataFromURL_doesNotDeliverResultAfterSUTInstanceHasBeenDeallocated() {
         let client = HTTPClientSpy()
         var sut: RemoteFeedImageDataLoader? = RemoteFeedImageDataLoader(client: client)
@@ -162,7 +205,8 @@ class RemoteFeedImageDataLoaderTests: XCTestCase {
     
     private class HTTPClientSpy: HTTPClient {
         private struct Task: HTTPClientTask {
-            func cancel() {}
+            let callback: () -> Void
+            func cancel() { callback() }
         }
 
         private var messages = [(url: URL, completion: (HTTPClient.Result) -> Void)]()
@@ -174,7 +218,9 @@ class RemoteFeedImageDataLoaderTests: XCTestCase {
 
         func get(from url: URL, completion: @escaping (HTTPClient.Result) -> Void) -> HTTPClientTask {
             messages.append((url, completion))
-            return Task()
+            return Task { [weak self] in
+                self?.cancelledURLs.append(url)
+            }
         }
         
         func complete(with error: Error, at index: Int = 0) {
