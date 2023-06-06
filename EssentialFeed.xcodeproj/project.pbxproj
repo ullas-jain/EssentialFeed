@@ -85,7 +85,7 @@
 		28BF5DF529DE991F00FD870A /* EssentialFeed.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2817406229D8115C00D1B0F0 /* EssentialFeed.framework */; };
 		28CD284C29E83EE300537A2D /* FeedCachePolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CD284B29E83EE300537A2D /* FeedCachePolicy.swift */; };
 		28D40CAC29DE9AC10057D176 /* TrackMemoryLeakHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F1EC5129DBE0080008D409 /* TrackMemoryLeakHelper.swift */; };
-		28D75D292A2F6AA000CA0C5D /* RemoteFeedImageDataLoaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D75D282A2F6AA000CA0C5D /* RemoteFeedImageDataLoaderTests.swift */; };
+		28D75D292A2F6AA000CA0C5D /* LoadFeedImageDataFromRemoteUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D75D282A2F6AA000CA0C5D /* LoadFeedImageDataFromRemoteUseCaseTests.swift */; };
 		28D75D2E2A2F6E0300CA0C5D /* HTTPClientSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D75D2D2A2F6E0300CA0C5D /* HTTPClientSpy.swift */; };
 		28D75D302A2F6E5D00CA0C5D /* RemoteFeedImageDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D75D2F2A2F6E5D00CA0C5D /* RemoteFeedImageDataLoader.swift */; };
 		28D75D322A2F6F7300CA0C5D /* HTTPURLResponse+StatusCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D75D312A2F6F7300CA0C5D /* HTTPURLResponse+StatusCode.swift */; };
@@ -195,7 +195,7 @@
 		28BF5DF129DE991F00FD870A /* EssentialFeedApiEndToEndTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EssentialFeedApiEndToEndTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		28BF5DF329DE991F00FD870A /* EssentialFeedApiEndToEndTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EssentialFeedApiEndToEndTests.swift; sourceTree = "<group>"; };
 		28CD284B29E83EE300537A2D /* FeedCachePolicy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCachePolicy.swift; sourceTree = "<group>"; };
-		28D75D282A2F6AA000CA0C5D /* RemoteFeedImageDataLoaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteFeedImageDataLoaderTests.swift; sourceTree = "<group>"; };
+		28D75D282A2F6AA000CA0C5D /* LoadFeedImageDataFromRemoteUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadFeedImageDataFromRemoteUseCaseTests.swift; sourceTree = "<group>"; };
 		28D75D2D2A2F6E0300CA0C5D /* HTTPClientSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClientSpy.swift; sourceTree = "<group>"; };
 		28D75D2F2A2F6E5D00CA0C5D /* RemoteFeedImageDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteFeedImageDataLoader.swift; sourceTree = "<group>"; };
 		28D75D312A2F6F7300CA0C5D /* HTTPURLResponse+StatusCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HTTPURLResponse+StatusCode.swift"; sourceTree = "<group>"; };
@@ -465,7 +465,7 @@
 		28D75D2A2A2F6AA600CA0C5D /* Feed API */ = {
 			isa = PBXGroup;
 			children = (
-				28D75D282A2F6AA000CA0C5D /* RemoteFeedImageDataLoaderTests.swift */,
+				28D75D282A2F6AA000CA0C5D /* LoadFeedImageDataFromRemoteUseCaseTests.swift */,
 				28D75D332A2F6FDE00CA0C5D /* URLProtocolStub.swift */,
 			);
 			path = "Feed API";
@@ -796,7 +796,7 @@
 				28E1179A29F102A3003018DD /* XCTestCase+FailableRetrieveFeedStoreSpecs.swift in Sources */,
 				28E1179E29F1044A003018DD /* XCTestCase+FailableDeleteFeedStoreSpecs.swift in Sources */,
 				286BC4FC29E50F9300261732 /* LoadFeedFromCacheUseCaseTests.swift in Sources */,
-				28D75D292A2F6AA000CA0C5D /* RemoteFeedImageDataLoaderTests.swift in Sources */,
+				28D75D292A2F6AA000CA0C5D /* LoadFeedImageDataFromRemoteUseCaseTests.swift in Sources */,
 				28E1179C29F10317003018DD /* XCTestCase+FailableInsertFeedStoreSpecs.swift .swift in Sources */,
 				28D75D342A2F6FDE00CA0C5D /* URLProtocolStub.swift in Sources */,
 				2836D2852A1DD82B00D391EE /* FeedLocalizationTests.swift .swift in Sources */,
