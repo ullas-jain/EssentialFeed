@@ -1396,7 +1396,7 @@
 				28A7DF842A38006D0039501F /* FeedStore2.xcdatamodel */,
 				286813742A077A6300DE26C8 /* FeedStore.xcdatamodel */,
 			);
-			currentVersion = 286813742A077A6300DE26C8 /* FeedStore.xcdatamodel */;
+			currentVersion = 28A7DF842A38006D0039501F /* FeedStore2.xcdatamodel */;
 			path = FeedStore.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
