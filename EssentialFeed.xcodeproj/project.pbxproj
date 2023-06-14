@@ -105,6 +105,7 @@
 		28F1EC5229DBE0080008D409 /* TrackMemoryLeakHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F1EC5129DBE0080008D409 /* TrackMemoryLeakHelper.swift */; };
 		28F2DBC729E3D1CD00A0F85A /* FeedStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F2DBC629E3D1CD00A0F85A /* FeedStore.swift */; };
 		28F2DBC929E3D1E500A0F85A /* LocalFeedLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F2DBC829E3D1E500A0F85A /* LocalFeedLoader.swift */; };
+		28FAA28A2A398351003DDDDA /* CoreDataFeedStore+FeedStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FAA2892A398351003DDDDA /* CoreDataFeedStore+FeedStore.swift */; };
 		28FDEEE029E59DE6003C7852 /* ValidateFeedCacheUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FDEEDF29E59DE6003C7852 /* ValidateFeedCacheUseCaseTests.swift */; };
 /* End PBXBuildFile section */
 
@@ -225,6 +226,7 @@
 		28F1EC5129DBE0080008D409 /* TrackMemoryLeakHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackMemoryLeakHelper.swift; sourceTree = "<group>"; };
 		28F2DBC629E3D1CD00A0F85A /* FeedStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedStore.swift; sourceTree = "<group>"; };
 		28F2DBC829E3D1E500A0F85A /* LocalFeedLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalFeedLoader.swift; sourceTree = "<group>"; };
+		28FAA2892A398351003DDDDA /* CoreDataFeedStore+FeedStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataFeedStore+FeedStore.swift"; sourceTree = "<group>"; };
 		28FDEEDF29E59DE6003C7852 /* ValidateFeedCacheUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidateFeedCacheUseCaseTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -478,6 +480,7 @@
 			children = (
 				286813732A077A6300DE26C8 /* FeedStore.xcdatamodeld */,
 				28A7DF862A3829800039501F /* CoreDataFeedStore+FeedImageDataLoader.swift */,
+				28FAA2892A398351003DDDDA /* CoreDataFeedStore+FeedStore.swift */,
 			);
 			name = Infrastructure;
 			sourceTree = "<group>";
@@ -787,6 +790,7 @@
 				28639FB52A077E8A00CF2742 /* CoreDataHelpers.swift in Sources */,
 				28CD284C29E83EE300537A2D /* FeedCachePolicy.swift in Sources */,
 				2817408529D9627500D1B0F0 /* HTTPClient.swift in Sources */,
+				28FAA28A2A398351003DDDDA /* CoreDataFeedStore+FeedStore.swift in Sources */,
 				2836D2802A1DD46900D391EE /* FeedViewModel.swift in Sources */,
 				286BC4F829E43FFE00261732 /* LocalFeedImage.swift in Sources */,
 				28F2DBC729E3D1CD00A0F85A /* FeedStore.swift in Sources */,
