@@ -1,26 +1,27 @@
 import CoreData
 
 public final class CoreDataFeedStore {
-    public static let modelName = "FeedStore"
+    private static let modelName = "FeedStore"
+    private static let model = NSManagedObjectModel.with(name: modelName, in: Bundle(for: CoreDataFeedStore.self))
     
     private let container: NSPersistentContainer
     private let context: NSManagedObjectContext
     
-    public struct ModelNotFound: Error {
-        public let modelName: String
+    enum StoreError: Error {
+        case modelNotFound
+        case failedToLoadPersistentContainer(Error)
     }
     
     public init(storeURL: URL) throws {
-        let bundle = Bundle(for: CoreDataFeedStore.self)
-        if let model = try? NSManagedObjectModel(name: "FeedStore", in: bundle) {
-            container = try NSPersistentContainer.load(
-                name: CoreDataFeedStore.modelName,
-                model: model,
-                url: storeURL
-            )
+        guard let model = CoreDataFeedStore.model else {
+            throw StoreError.modelNotFound
+        }
+
+        do {
+            container = try NSPersistentContainer.load(name: CoreDataFeedStore.modelName, model: model, url: storeURL)
             context = container.newBackgroundContext()
-        } else {
-            throw ModelNotFound(modelName: "FeedStore")
+        } catch {
+            throw StoreError.failedToLoadPersistentContainer(error)
         }
     }
     

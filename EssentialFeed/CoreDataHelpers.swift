@@ -15,10 +15,9 @@ public extension NSPersistentContainer {
 }
 
 extension NSManagedObjectModel {
-    convenience init?(name: String, in bundle: Bundle) {
-        guard let momd = bundle.url(forResource: name, withExtension: "momd") else {
-            return nil
-        }
-        self.init(contentsOf: momd)
+    static func with(name: String, in bundle: Bundle) -> NSManagedObjectModel? {
+        return bundle
+            .url(forResource: name, withExtension: "momd")
+            .flatMap { NSManagedObjectModel(contentsOf: $0) }
     }
 }
