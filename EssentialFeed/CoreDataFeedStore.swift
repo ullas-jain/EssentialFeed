@@ -10,7 +10,8 @@ public final class CoreDataFeedStore {
         public let modelName: String
     }
     
-    public init(storeURL: URL, bundle: Bundle = .main) throws {
+    public init(storeURL: URL) throws {
+        let bundle = Bundle(for: CoreDataFeedStore.self)
         if let model = try? NSManagedObjectModel(name: "FeedStore", in: bundle) {
             container = try NSPersistentContainer.load(
                 name: CoreDataFeedStore.modelName,
