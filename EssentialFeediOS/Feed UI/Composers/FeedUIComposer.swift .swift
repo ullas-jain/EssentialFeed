@@ -1,11 +1,6 @@
 import UIKit
 import EssentialFeed
-
-public class XYZ: FeedErrorView {
-    public func display(_ viewModel: EssentialFeed.FeedErrorViewModel) {
-        
-    }
-}
+import EssentialFeediOS
 
 public final class FeedUIComposer {
     private init() {}
@@ -20,7 +15,7 @@ public final class FeedUIComposer {
         presentationAdapter.presenter = FeedPresenter(
             feedView: FeedViewAdapter(controller: feedController, imageLoader: MainQueueDispatchDecorator(decoratee: imageLoader)),
             loadingView: WeakRefVirtualProxy(feedController),
-            errorView: XYZ())
+            errorView: WeakRefVirtualProxy(feedController))
         
         return feedController
     }
